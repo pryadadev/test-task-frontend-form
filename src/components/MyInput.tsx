@@ -10,6 +10,8 @@ interface Props {
   assistText?: string;
   errorText?: string;
   validation?: Validation;
+  isValidValue?: (value: string, validation: Validation) => boolean | 0 | undefined;
+  type?: string;
 }
 
 const MyInput = (props: Props) => {
@@ -23,21 +25,21 @@ const MyInput = (props: Props) => {
     validation = {
       minLength: 0,
       maxLength: Infinity,
+      pattern: /^[\s\S]*$/
     },
+    isValidValue,
+    type = "text"
   } = props;
 
   const [error, setError] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (
-      event.target.value.length >= validation.minLength &&
-      event.target.value.length <= validation.maxLength
-    ) {
-      if (error) {
+    if (isValidValue) {
+      if (isValidValue(event.target.value, validation)) {
         setError(false);
+      } else {
+        setError(true);
       }
-    } else {
-      setError(true);
     }
     onChange(event);
   };
@@ -54,7 +56,7 @@ const MyInput = (props: Props) => {
               ? "border-errorColor border-2 p-[15px]"
               : "focus:border-2 focus:border-accentColor focus:p-[15px]"
           }`}
-          type="text"
+          type={type}
           value={value}
           placeholder={placeholder}
           onChange={handleInputChange}
