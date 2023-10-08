@@ -1,3 +1,13 @@
+/**
+ * Project Name: test-task-frontend-form
+ * Description: form with stylized elements for data entry
+ *
+ * Author: Mikhail Pryada
+ * Email: pryadadev@gmail.com
+ * Date: 8th October 2023
+ */
+
+
 import React, { useState } from "react";
 import MyInput from "@components/MyInput.tsx";
 import MyCheckbox from "@components/MyCheckbox.tsx";
@@ -6,11 +16,6 @@ import MyRadio from "@components/MyRadio.tsx";
 import MyDropdown from "@components/MyDropdown.tsx";
 import MyButton from "@components/MyButton.tsx";
 import { Validation } from "@types.ts";
-
-/*
- * Для решения задачи использую стандартный подход управляемых компонентов
- * с помощью useState для каждого элемента формы
- */
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -56,7 +61,6 @@ const App = () => {
   const [dropdownTitle, setDropdownTitle] = useState(0);
 
   const isValidValue = (value: string, validation: Validation) => {
-    // Сначала проверяется наличие требования, а потом соответствие требованию
     return (
       (validation.minLength && value.length >= validation.minLength) &&
       (validation.maxLength && value.length <= validation.maxLength) &&
@@ -97,13 +101,13 @@ const App = () => {
   const handleShowJson = () => {
     alert(
       JSON.stringify({
-        username: username,
-        password: password,
-        email: email,
-        rememberMe: rememberMe,
-        receiveNews: receiveNews,
-        radioSelection: radioSelection,
-        dropdownTitle: dropdownTitle,
+        "username": username,
+        "password": password,
+        "email": email,
+        "rememberMe": rememberMe,
+        "receiveNews": receiveNews,
+        "radioSelection": radioSelection,
+        "dropdownTitle": dropdownTitle,
       }),
     );
   };
