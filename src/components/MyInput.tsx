@@ -46,7 +46,7 @@ const MyInput = (props: Props) => {
     <div className="flex flex-col gap-2">
       <div className="font-semibold text-[12px]">{label}</div>
 
-      <div id="v3ngf76w7" className="relative">
+      <div className="relative">
         <input
           className={`h-14 w-full flex flex-col rounded-lg p-4 pr-12 gap-2.5 border-[1px] border-borderColor placeholder-textDisabledColor
           text-textColor focus:outline-0 ${

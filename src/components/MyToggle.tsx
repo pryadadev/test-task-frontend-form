@@ -13,8 +13,10 @@ const MyToggle = (props: Props) => {
 
   return (
     <div
-      className="flex gap-4 cursor-pointer w-fit select-none"
+      className="flex gap-4 cursor-pointer w-fit select-none focus:outline-accentColor"
       onClick={onChange}
+      onKeyDown={(event) => {event.key === "Enter" && onChange()}}
+      tabIndex={0}
     >
       <div className={`w-[49px] h-6 rounded-full border-[1px] border-borderColor flex items-center justify-end px-[3px]
       transition-colors ${toggled ?  "bg-accentColor" : "bg-backgroundColor" }`}>
